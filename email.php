@@ -1,4 +1,8 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 require __DIR__ . "/_init.php";
 // echo Template::view('templates/simple-mail.php');
 
@@ -22,10 +26,6 @@ try {
 	$mail->addAddress('ellen@example.com');               //Name is optional
 	$mail->addReplyTo('info@example.com', 'Information');
 	$mail->addBCC('bcc@example.com');
-
-	//Attachments
-	$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-	$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
 	//Content
 	$mail->isHTML(true);                                  //Set email format to HTML
