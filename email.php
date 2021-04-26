@@ -1,7 +1,6 @@
 <?php
-include_once "_init.php";
+require __DIR__ . "/_init.php";
 // echo Template::view('templates/simple-mail.php');
-
 
 //Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);

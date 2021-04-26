@@ -1,6 +1,7 @@
 <?php
-include_once "engine.php";
-include_once "vendor/autoload.php";
+
+require __DIR__ . '/vendor/autoload.php';;
+require __DIR__ . "/engine.php";
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
