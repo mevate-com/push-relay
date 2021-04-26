@@ -4,10 +4,14 @@
     <meta charset="utf-8">
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo {% yield name %},<br></p>
-<p>{% yield content %}</p>
+<p>Hallo {% yield name %},<br>
+    klicken Sie auf  <a href="{% yield link %}">diesen Anmelde-Link</a>, um Ihr Kennwort zurückzusetzen.
+</p>
 <p>
-    <small style="color:#666">Diese E-Mail wurde von {System} versendet. </small>
+    Ignorieren Sie diese E-Mail, wenn das Kennwort nicht geändert werden soll.
+</p>
+<p>
+    <small style="color:#666">Diese E-Mail wurde von {System} versendet.</small>
 </p>
 <p>
     <small style="color:#666">
