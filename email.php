@@ -1,40 +1,50 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . "/_init.php";
-// echo Template::view('templates/simple-mail.php');
+require __DIR__ . "/helper/send-mail.php";
 
-//Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
 
-try {
-	//Server settings
-	$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-	$mail->isSMTP();                                            //Send using SMTP
-	$mail->SMTPAuth = true;                                   //Enable SMTP authentication
-	$mail->Host = $_ENV['SMTP_HOST'];                     //Set the SMTP server to send through
-	$mail->Username = $_ENV['SMTP_USER'];                     //SMTP username
-	$mail->Password = $_ENV['SMTP_PASSWORD'];                               //SMTP password
-	$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-	$mail->Port = $_ENV['SMTP_PORT'];                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-
-	//Recipients
-	$mail->setFrom('from@example.com', 'Mailer');
-	$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-	$mail->addAddress('ellen@example.com');               //Name is optional
-	$mail->addReplyTo('info@example.com', 'Information');
-	$mail->addBCC('bcc@example.com');
-
-	//Content
-	$mail->isHTML(true);                                  //Set email format to HTML
-	$mail->Subject = 'Here is the subject';
-	$mail->Body = 'This is the HTML message body <b>in bold!</b>';
-	$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-	$mail->send();
-	echo 'Message has been sent';
-} catch (Exception $e) {
-	echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+$payload = param("payload");
+$schema = param("schema");
+$recipients = param("recipients");
+if(!$payload || !$schema || !$recipients) {
+	jsonResponse(false, ["error" => "Please supply all needed data"]);
 }
+
+$payload = json_decode($payload);
+
+$loadedRecipients = [];
+foreach ($recipients as $recipientData) {
+	$temp = json_decode($recipientData);
+	array_push($loadedRecipients, [$temp->email, $temp->name]);
+}
+$title = "Neue Nachricht";
+switch ($schema) {
+	case "mevate/reset-password":
+		$title = "Ihr Passwort wurde zurückgesetzt";
+		$content = $twig->render('reset-password.php',  ["payload" => $payload]);
+		break;
+	case "mevate/simple-mail":
+		$title = $payload->title;
+		$content = $twig->render('simple-mail.php',  ["payload" => $payload]);
+		break;
+	case "mevate/login-code":
+		$title = "Ihr Anmelde-Link";
+		$content = $twig->render('login-code.php', ["payload" => $payload]);
+		break;
+	case "mein-verein/event":
+		$title = "Neue Veranstaltung: {$payload->title}";
+		$content = $twig->render('mein-verein/event.php', ["payload" => $payload]);
+		break;
+	case "mein-verein/poll":
+		$title = "Neue Umfrage: {$payload->title}";
+		$content = $twig->render('mein-verein/poll.php', ["payload" => $payload]);
+		break;
+	case "mein-verein/news":
+		$title = "Es gibt Neuigkeiten: {$payload->title}";
+		$content = $twig->render('mein-verein/news.php', ["payload" => $payload]);
+		break;
+}
+sendMail($loadedRecipients, "no-reply@mevate.com", $title, $content);
+
+//jsonResponse(true, ["Hello"]);

@@ -49,7 +49,7 @@ Supported payload schemas:
   "schema": "mevate/simple-mail",
   "data": {
     "name": "Max", 
-    "content": "Hello <b>World</b>",
+    "content": "Hello <b>World</b>"
   }
 }
 ```

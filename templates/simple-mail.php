@@ -2,12 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo {% yield name %},<br></p>
-<p>{% yield content %}</p>
+<p>Hallo  {{ name }},<br></p>
+<p> {{ content }}</p>
 <p>
-    <small style="color:#666">Diese E-Mail wurde von {System} versendet. </small>
+    <small style="color:#666">Diese E-Mail wurde automatisch versendet. </small>
 </p>
 <p>
     <small style="color:#666">

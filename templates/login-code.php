@@ -2,15 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo {% yield name %},<br></p>
-<p>klicken Sie auf <a href="{% yield link %}">diesen Anmelde-Link</a>, um automatisch angemeldet zu werden.
+<p>Hallo  {{ name }},<br></p>
+<p>klicken Sie auf <a href=" {{ link }}">diesen Anmelde-Link</a>, um automatisch angemeldet zu werden.
 </p>
 <p>
-    Alternativ können Sie auch unter <a href="{% yield codeUrl %}">{% yield codeUrl %}</a>
+    Alternativ können Sie auch unter <a href=" {{ codeUrl }}"> {{ codeUrl }}</a>
     den Anmelde-Code
-<pre><code>{% yield code %}</code></pre>
+<pre><code> {{ code }}</code></pre>
 eingeben, um angemeldet zu werden.
 </p>
 <p>

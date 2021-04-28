@@ -6,11 +6,11 @@
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
 <p>Hallo,<br></p>
-<p>es wurde eine neue Veranstaltung erstellt!
+<p>es gibt Neuigkeiten!
 </p>
 <p>
 	<b> {{ payload.title }}</b><br>
-     {{ description }}
+    {{payload.body}}
 </p>
 <p>
 	<small style="color:#666">Diese E-Mail wurde automatisch versendet.</small>
@@ -29,7 +29,7 @@
 </p>
 <p>
 	<small style="color:#666">
-		Sie können den Empfang solcher E-Mails in Ihrem Profil <a href=" {{ optOutUrl }}">konfigurieren</a>
+		Sie können den Empfang solcher E-Mails in Ihrem Profil <a href="{{ optOutUrl }}">konfigurieren</a>
 	</small>
 </p>
 </body>
