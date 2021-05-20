@@ -5,14 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo  {{ name }},<br></p>
-<p>klicken Sie auf <a href=" {{ link }}">diesen Anmelde-Link</a>, um automatisch angemeldet zu werden.
-</p>
-<p>
-    Alternativ können Sie auch unter <a href=" {{ codeUrl }}"> {{ codeUrl }}</a>
-    den Anmelde-Code
-<pre><code> {{ code }}</code></pre>
-eingeben, um angemeldet zu werden.
+<p>Hallo,<br></p>
+<p>klicken Sie auf <a href=" {{ payload.link }}">diesen Link</a>, um Ihre E-Mail-Benachrichtigungseinstellungen zu speichern. Sollten Sie keine Änderungen vornehmen wollen, so können Sie diese E-Mail ignorieren.
 </p>
 <p>
     <small style="color:#666">Diese E-Mail wurde von automatisiert versendet. </small>

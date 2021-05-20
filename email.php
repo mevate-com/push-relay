@@ -24,10 +24,6 @@ switch ($schema) {
 		$title = "Ihr Passwort wurde zurückgesetzt";
 		$content = $twig->render('reset-password.php',  ["payload" => $payload]);
 		break;
-	case "mevate/simple-mail":
-		$title = $payload->title;
-		$content = $twig->render('simple-mail.php',  ["payload" => $payload]);
-		break;
 	case "mevate/login-code":
 		$title = "Ihr Anmelde-Link";
 		$content = $twig->render('login-code.php', ["payload" => $payload]);
@@ -44,7 +40,15 @@ switch ($schema) {
 		$title = "Es gibt Neuigkeiten: {$payload->title}";
 		$content = $twig->render('mein-verein/news.php', ["payload" => $payload]);
 		break;
+	case "mevate/confirm-email-subscription":
+		$title = "Bestätigen Sie Ihre E-Mail-Einstellungen";
+		$content = $twig->render('confirm-email-subscription.php',  ["payload" => $payload]);
+		break;
+	default:
+	case "mevate/simple-mail":
+		$title = $payload->title;
+		$content = $twig->render('simple-mail.php',  ["payload" => $payload]);
+		break;
 }
-sendMail($loadedRecipients, "no-reply@mevate.com", $title, $content);
 
-//jsonResponse(true, ["Hello"]);
+sendMail($loadedRecipients, $_ENV['SMTP_USER'], $title, $content);

@@ -13,7 +13,7 @@
      {{ description }}
 </p>
 <p>
-	<small style="color:#666">Diese E-Mail wurde automatisch versendet.</small>
+	<small style="color:#666">Diese E-Mail wurde automatisiert versendet.</small>
 </p>
 <p>
 	<small style="color:#666">
