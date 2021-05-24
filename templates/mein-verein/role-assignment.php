@@ -6,11 +6,7 @@
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
 <p>Guten Tag,<br></p>
-<p>es wurde eine neue Veranstaltung erstellt!
-</p>
-<p>
-	<b> {{ payload.title }}</b><br>
-     {{ payload.description }}
+<p>Sie wurden zu der Berechtigungsrolle "{{ payload.title }}" hinzugefügt.
 </p>
 <p>
 	<small style="color:#666">Diese E-Mail wurde automatisiert versendet.</small>

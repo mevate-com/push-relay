@@ -5,12 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo,<br></p>
+<p>Guten Tag,<br></p>
 <p>es gibt Neuigkeiten!
 </p>
 <p>
 	<b> {{ payload.title }}</b><br>
-    {{payload.body}}
+    {{payload.body|striptags}}
 </p>
 <p>
 	<small style="color:#666">Diese E-Mail wurde automatisiert versendet.</small>
@@ -29,7 +29,7 @@
 </p>
 <p>
 	<small style="color:#666">
-		Sie können den Empfang solcher E-Mails in Ihrem Profil <a href="{{ optOutUrl }}">konfigurieren</a>
+		Sie können den Empfang solcher E-Mails in Ihrem Profil <a href="{{ payload.optOutUrl }}">konfigurieren</a>
 	</small>
 </p>
 </body>

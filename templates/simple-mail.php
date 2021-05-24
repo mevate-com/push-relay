@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo  {{ payload.name }},<br></p>
+<p>Guten Tag  {{ payload.name }},<br></p>
 <p> {{ payload.content }}</p>
 <p>
     <small style="color:#666">Diese E-Mail wurde automatisiert versendet. </small>

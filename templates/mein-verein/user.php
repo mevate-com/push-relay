@@ -6,14 +6,12 @@
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
 <p>Guten Tag,<br></p>
-<p>es wurde eine neue Veranstaltung erstellt!
+<p>
+    {{ payload.first_name }} {{ payload.last_name }} ist Ihrer Organisation beigetreten!
 </p>
 <p>
-	<b> {{ payload.title }}</b><br>
-     {{ payload.description }}
-</p>
-<p>
-	<small style="color:#666">Diese E-Mail wurde automatisiert versendet.</small>
+	<small style="color:#666">Diese E-Mail wurde automatisiert versendet.
+        Sie haben diese E-Mail erhalten, da Sie Administrator Ihrer Organisation sind und Sicherheitsbenachrichtigungen aktiviert haben.</small>
 </p>
 <p>
 	<small style="color:#666">

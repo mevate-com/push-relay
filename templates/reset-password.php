@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body style="margin:20px;font-family:'Arial',sans-serif">
-<p>Hallo  {{ name }},<br>
+<p>Guten Tag  {{ name }},<br>
     klicken Sie auf  <a href=" {{ link }}">diesen Anmelde-Link</a>, um Ihr Kennwort zurückzusetzen.
 </p>
 <p>
